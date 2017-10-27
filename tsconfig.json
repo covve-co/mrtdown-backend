@@ -50,10 +50,5 @@
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
-  "rules": {
-    "object-literal-sort-keys": false,
-    "ordered-imports": false,
-    "max-line-length": [true, 80]
-  },
   "include": ["./src"]
 }
