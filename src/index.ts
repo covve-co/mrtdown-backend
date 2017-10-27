@@ -1,4 +1,3 @@
-import express = require("express");
-const app = express();
+import * as express from "express";
 
-app.listen(4000);
+const app = express();
