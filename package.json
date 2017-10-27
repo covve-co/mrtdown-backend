@@ -1,0 +1,32 @@
+{
+  "name": "mrtdown-backend",
+  "version": "0.0.1",
+  "description": "Backend for MRTDown",
+  "main": "index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "lint": "tslint --project .",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrtdown/mrtdown-backend.git"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "twitter",
+    "reddit",
+    "api"
+  ],
+  "author": "Covve.co",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrtdown/mrtdown-backend/issues"
+  },
+  "homepage": "https://github.com/mrtdown/mrtdown-backend#readme",
+  "dependencies": {
+    "@types/express": "^4.0.39",
+    "express": "^4.16.2"
+  }
+}
