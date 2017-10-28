@@ -1,5 +1,4 @@
 const config = require('./config');
-
 const logger = require('./logger');
 
 const express = require('express');
@@ -10,19 +9,23 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const firebase = require('./firebase');
+const twitter = require('./twitter');
+const reddit = require('./reddit');
 
 const api = require('./routes/api');
 const admin = require('./routes/admin');
 
-(function() {
+(async () => {
 
   // Create express app
   const app = aa(express());
   const server = http.createServer(app);
   const io = socketio(server);
 
-  // Setup DB
+  // Setup services
   firebase.intialize();
+  await twitter.initialize();
+  await reddit.initialize();
 
   // Middleware
   app.use(morgan('tiny'));

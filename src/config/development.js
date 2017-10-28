@@ -10,6 +10,13 @@ module.exports = {
     privateKey: secrets.firebase.privateKey,
     databaseUrl: secrets.firebase.databaseUrl
   },
+  reddit: {
+    userAgent: 'MRTDownBot',
+    clientId: secrets.reddit.clientId,
+    clientSecret: secrets.reddit.clientSecret,
+    username: secrets.reddit.username,
+    password: secrets.reddit.password,
+  },
   twitter: {
     consumerKey: secrets.twitter.consumerKey,
     consumerSecret: secrets.twitter.consumerSecret,
