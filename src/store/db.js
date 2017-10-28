@@ -1,5 +1,7 @@
 const config = require('../config');
 
+const logger = require('../logger');
+
 const mongodb = require('mongodb');
 const assert = require('assert');
 
@@ -7,7 +9,7 @@ const assert = require('assert');
 module.exports.connect = (state) => {
   mongodb.MongoClient.connect(config.db.url, (err, db) => {
     if (err) throw new Error('Error connecting to MongoDB.');
-    console.log('Connected to MongoDB.');
+    logger.info('Connected to MongoDB.');
     state.db = db;
   });
 };

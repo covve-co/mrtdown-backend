@@ -1,5 +1,7 @@
 const config = require('./config');
 
+const logger = require('./logger');
+
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
@@ -34,5 +36,5 @@ app.use("/admin", admin(express.Router()));
 
 // Launch app
 server.listen(config.port, () => {
-  console.log('Server listening on port ' + config.port + '.');
+  logger.info('Server listening on port ' + config.port + '.');
 });
