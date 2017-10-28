@@ -14,4 +14,12 @@ module.exports = {
     accessTokenKey: process.env.TWITTER_ACCESS_TOKEN_KEY,
     accessTokenSecret: process.env.TWITTER_TOKEN_SECRET,
   }
+
+  lineNames: {
+    EWL: 'East-West Line',
+    NSL: 'North-South Line',
+    CCL: 'Circle Line',
+    NEL: 'North-East Line',
+    DTL: 'Downtown Line',
+  },
 };

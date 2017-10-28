@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const firebase = require('./firebase');
+const store = require('./firebase/store');
 const twitter = require('./twitter');
 const reddit = require('./reddit');
 
@@ -23,9 +24,11 @@ const admin = require('./routes/admin');
   const io = socketio(server);
 
   // Setup services
-  firebase.intialize();
+  await firebase.intialize();
   await twitter.initialize();
   await reddit.initialize();
+
+  store.setState({hello: 'no'});
 
   // Middleware
   app.use(morgan('tiny'));
@@ -44,4 +47,4 @@ const admin = require('./routes/admin');
     logger.info('Server listening on port ' + config.port + '.');
   });
 
-})()
+})();
