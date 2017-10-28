@@ -20,3 +20,18 @@ module.exports.setState = (newState) => {
     }, (updateInterval - 1) * 1000);
   }
 };
+
+// Some utility functions to work with the state
+module.exports.updateLine = (name, newLine) => {
+  // FIXME
+  const state = JSON.parse(JSON.stringify(getState()));
+  state.lines[name] = newLine;
+  module.exports.setState(state);
+};
+
+module.exports.clearLine = (name) => {
+  // FIXME
+  const state = JSON.parse(JSON.stringify(getState()));
+  delete state.lines[name];
+  module.exports.setState(state);
+};
