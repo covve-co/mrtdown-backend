@@ -22,12 +22,14 @@
     "url": "https://github.com/mrtdown/mrtdown-backend/issues"
   },
   "homepage": "https://github.com/mrtdown/mrtdown-backend#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
   "dependencies": {
-    "assert": "^1.4.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-async-await": "^1.1.0",
+    "firebase-admin": "^5.4.3",
     "jquery": "^3.2.1",
     "mongodb": "^2.2.33",
     "morgan": "^1.9.0",

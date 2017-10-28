@@ -9,32 +9,36 @@ const aa = require('express-async-await');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-const store = require('./store');
+const firebase = require('./firebase');
 
 const api = require('./routes/api');
 const admin = require('./routes/admin');
 
-// Create express app
-const app = aa(express());
-const server = http.createServer(app);
-const io = socketio(server);
+(function() {
 
-// Setup DB
-store.setup();
+  // Create express app
+  const app = aa(express());
+  const server = http.createServer(app);
+  const io = socketio(server);
 
-// Middleware
-app.use(morgan('tiny'));
-app.use(bodyParser.json());
+  // Setup DB
+  firebase.intialize();
 
-// Static
-app.use(express.static(__dirname + '/node_modules/socket.io'));
-app.use(express.static(__dirname + '/node_modules/jquery/dist'));
+  // Middleware
+  app.use(morgan('tiny'));
+  app.use(bodyParser.json());
 
-// Mount routes
-app.use("/api", api(express.Router()));
-app.use("/admin", admin(express.Router()));
+  // Static
+  app.use(express.static(__dirname + '/node_modules/socket.io'));
+  app.use(express.static(__dirname + '/node_modules/jquery/dist'));
 
-// Launch app
-server.listen(config.port, () => {
-  logger.info('Server listening on port ' + config.port + '.');
-});
+  // Mount routes
+  app.use("/api", api(express.Router()));
+  app.use("/admin", admin(express.Router()));
+
+  // Launch app
+  server.listen(config.port, () => {
+    logger.info('Server listening on port ' + config.port + '.');
+  });
+
+})()
