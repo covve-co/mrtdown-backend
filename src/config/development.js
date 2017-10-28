@@ -7,11 +7,7 @@ module.exports = {
   logLevel: 'debug',
 
   firebase: {
-    projectId: secrets.firebase.projectId,
-    clientEmail: secrets.firebase.clientEmail,
-    privateKey: secrets.firebase.privateKey,
-    databaseUrl: secrets.firebase.databaseUrl,
-    updateInterval: 300,
+    serverKey: secrets.firebase.serverKey,
   },
 
   reddit: {
@@ -27,13 +23,5 @@ module.exports = {
     consumerSecret: secrets.twitter.consumerSecret,
     accessTokenKey: secrets.twitter.accessTokenKey,
     accessTokenSecret: secrets.twitter.accessTokenSecret,
-  },
-
-  lineNames: {
-    EWL: 'East-West Line',
-    NSL: 'North-South Line',
-    CCL: 'Circle Line',
-    NEL: 'North-East Line',
-    DTL: 'Downtown Line',
   },
 };

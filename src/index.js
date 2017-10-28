@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const firebase = require('./firebase');
-const store = require('./firebase/store');
 const twitter = require('./twitter');
 const reddit = require('./reddit');
 const api = require('./routes/api');
@@ -18,11 +17,9 @@ const admin = require('./routes/admin');
   const app = express();
 
   // Setup services
-  await firebase.intialize();
+  firebase.intialize();
   twitter.initialize();
   reddit.initialize();
-
-  store.setState({hello: 'no'});
 
   // Middleware
   app.use(morgan('tiny'));
