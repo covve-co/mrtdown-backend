@@ -3,17 +3,20 @@ const config = require('../config');
 const logger = require('../logger');
 
 const admin = require('firebase-admin');
-const serviceAccount = require('./' + config.firebase.keyFile);
 
 let app;
 
 module.exports.intialize = () => {
   app = admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.cert({
+      projectId: config.firebase.projectId,
+      clientEmail: config.firebase.clientEmail,
+      privateKey: config.firebase.privateKey,
+    }),
     databaseURL: config.firebase.databaseUrl,
   });
 
-  // Print success.
+  // Print success
   app.database().ref();
   logger.info('Connected to Firebase.');
 };
