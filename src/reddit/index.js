@@ -2,10 +2,9 @@ const config = require('../config');
 const logger = require('../logger');
 
 const snoowrap = require('snoowrap');
-
 let reddit;
 
-module.exports.initialize = async () => {
+module.exports.initialize = () => {
   const _reddit = new snoowrap({
     userAgent: config.reddit.userAgent,
     clientId: config.reddit.clientId,
@@ -13,9 +12,5 @@ module.exports.initialize = async () => {
     username: config.reddit.username,
     password: config.reddit.password,
   });
-
-  // Test and print success
-  await _reddit.getHot();
-  reddit = _reddit;
-  logger.info('Connected to Reddit API.');
+  logger.info('Initialized Reddit API.');
 };
