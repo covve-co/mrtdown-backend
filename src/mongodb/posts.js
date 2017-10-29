@@ -7,6 +7,7 @@ const postsCollection = () => {
 
 module.exports.all = async () => {
   const posts = await postsCollection().find({}).toArray();
+  logger.debug('Fetched ' + posts.length + ' posts.');
   return posts;
 };
 
@@ -19,4 +20,5 @@ module.exports.insert = async (post) => {
     votes: post.votes,
   };
   await postsCollection().insert(document);
+  logger.debug('Inserted post.');
 };
