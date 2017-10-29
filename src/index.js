@@ -2,14 +2,11 @@ const config = require('./config');
 const logger = require('./logger');
 
 const express = require('express');
-const http = require('http');
-const socketio = require('socket.io');
-const aa = require('express-async-await');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+const mongodb = require('./mongodb');
 const firebase = require('./firebase');
-const store = require('./firebase/store');
 const twitter = require('./twitter');
 const reddit = require('./reddit');
 
@@ -19,16 +16,13 @@ const admin = require('./routes/admin');
 (async () => {
 
   // Create express app
-  const app = aa(express());
-  const server = http.createServer(app);
-  const io = socketio(server);
+  const app = express();
 
   // Setup services
-  await firebase.intialize();
-  await twitter.initialize();
-  await reddit.initialize();
-
-  store.setState({hello: 'no'});
+  await mongodb.initialize();
+  firebase.intialize();
+  twitter.initialize();
+  reddit.initialize();
 
   // Middleware
   app.use(morgan('tiny'));
@@ -43,7 +37,7 @@ const admin = require('./routes/admin');
   app.use("/admin", admin(express.Router()));
 
   // Launch app
-  server.listen(config.port, () => {
+  app.listen(config.port, () => {
     logger.info('Server listening on port ' + config.port + '.');
   });
 
