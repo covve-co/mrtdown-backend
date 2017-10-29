@@ -5,9 +5,11 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+const mongodb = require('./mongodb');
 const firebase = require('./firebase');
 const twitter = require('./twitter');
 const reddit = require('./reddit');
+
 const api = require('./routes/api');
 const admin = require('./routes/admin');
 
@@ -17,6 +19,7 @@ const admin = require('./routes/admin');
   const app = express();
 
   // Setup services
+  await mongodb.initialize();
   firebase.intialize();
   twitter.initialize();
   reddit.initialize();

@@ -5,7 +5,7 @@ const snoowrap = require('snoowrap');
 let reddit;
 
 module.exports.initialize = () => {
-  const _reddit = new snoowrap({
+  reddit = new snoowrap({
     userAgent: config.reddit.userAgent,
     clientId: config.reddit.clientId,
     clientSecret: config.reddit.clientSecret,

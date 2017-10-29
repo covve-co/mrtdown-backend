@@ -6,6 +6,10 @@ module.exports = {
 
   logLevel: 'debug',
 
+  mongodb: {
+    url: 'mongodb://localhost:27017/mrtdown_development',
+  },
+
   firebase: {
     serverKey: secrets.firebase.serverKey,
   },
