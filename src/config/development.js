@@ -27,5 +27,10 @@ module.exports = {
     consumerSecret: secrets.twitter.consumerSecret,
     accessTokenKey: secrets.twitter.accessTokenKey,
     accessTokenSecret: secrets.twitter.accessTokenSecret,
+
+    keywords: [
+      'MRT',
+      'SMRT',
+    ],
   },
 };

@@ -24,6 +24,9 @@ const admin = require('./routes/admin');
   twitter.initialize();
   reddit.initialize();
 
+  reddit.beginPolling();
+  twitter.beginStream(lol => console.log(lol));
+
   // Middleware
   app.use(morgan('tiny'));
   app.use(bodyParser.json());

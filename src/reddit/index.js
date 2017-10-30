@@ -14,3 +14,9 @@ module.exports.initialize = () => {
   });
   logger.info('Initialized Reddit API.');
 };
+
+module.exports.beginPolling = (cb) => {
+  setInterval(() => {
+    console.log('Hello');
+  }, 5000);
+};

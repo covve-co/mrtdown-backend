@@ -1,10 +1,6 @@
 module.exports = {
   port: process.env.PORT,
-  host: 'helloworld.com',
-
-  logLevel: 'info',
-
-  mongodb: {
+  host: 'helloworld.com', logLevel: 'info', mongodb: {
     url: process.env.MONGODB_URL,
   },
 
@@ -28,5 +24,10 @@ module.exports = {
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
     accessTokenKey: process.env.TWITTER_ACCESS_TOKEN_KEY,
     accessTokenSecret: process.env.TWITTER_TOKEN_SECRET,
+
+    keywords: [
+      'MRT',
+      'SMRT',
+    ],
   }
 };

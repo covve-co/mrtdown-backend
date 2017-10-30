@@ -13,3 +13,19 @@ module.exports.initialize = () => {
   });
   logger.info('Initialized Twitter API.');
 };
+
+module.exports.pingSMRTStatus = () => {
+};
+
+module.exports.beginStream = (cb) => {
+  const keywords = config.twitter.keywords.join();
+  const stream = twitter.stream('statuses/filter', {track: keywords + ' -filter:retweets'});
+  stream.on('data', function(event) {
+    if (!event.text.startsWith('RT')) {
+      cb(event.text);
+    }
+  });
+  stream.on('error', function(err) {
+    logger.debug(err);
+  });
+};
