@@ -20,6 +20,8 @@ module.exports = {
     clientSecret: secrets.reddit.clientSecret,
     username: secrets.reddit.username,
     password: secrets.reddit.password,
+
+    pollInterval: 10000,
   },
 
   twitter: {
@@ -28,6 +30,7 @@ module.exports = {
     accessTokenKey: secrets.twitter.accessTokenKey,
     accessTokenSecret: secrets.twitter.accessTokenSecret,
 
+    verifiedUsername: 'SMRT_Singapore',
     keywords: [
       'MRT',
       'SMRT',

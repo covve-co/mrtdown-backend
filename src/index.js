@@ -24,15 +24,15 @@ const admin = require('./routes/admin');
   twitter.initialize();
   reddit.initialize();
 
-  reddit.beginPolling();
-  twitter.beginStream(lol => console.log(lol));
+  // Start the streaming and polling
+  reddit.startPolling();
+  twitter.startStreaming();
 
   // Middleware
   app.use(morgan('tiny'));
   app.use(bodyParser.json());
 
   // Static
-  app.use(express.static(__dirname + '/node_modules/socket.io'));
   app.use(express.static(__dirname + '/node_modules/jquery/dist'));
 
   // Mount routes

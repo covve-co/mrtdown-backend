@@ -15,8 +15,10 @@ module.exports.initialize = () => {
   logger.info('Initialized Reddit API.');
 };
 
-module.exports.beginPolling = (cb) => {
-  setInterval(() => {
-    console.log('Hello');
-  }, 5000);
+const poll = () => {
+  logger.debug('Polling!');
+};
+
+module.exports.startPolling = () => {
+  setInterval(poll, config.reddit.pollInterval);
 };

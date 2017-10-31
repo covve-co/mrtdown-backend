@@ -17,6 +17,8 @@ module.exports = {
     clientSecret: process.env.REDDIT_CLIENT_SECRET,
     username: process.env.REDDIT_USERNAME,
     password: process.env.REDDIT_PASSWORD,
+
+    pollInterval: 30000,
   },
 
   twitter: {
@@ -25,6 +27,7 @@ module.exports = {
     accessTokenKey: process.env.TWITTER_ACCESS_TOKEN_KEY,
     accessTokenSecret: process.env.TWITTER_TOKEN_SECRET,
 
+    verifiedUsername: 'SMRT_Singapore',
     keywords: [
       'MRT',
       'SMRT',
