@@ -1,14 +1,14 @@
 module.exports = {
   port: process.env.PORT,
-  host: 'helloworld.com', logLevel: 'info', mongodb: {
+  host: 'helloworld.com',
+  logLevel: 'info',
+
+  mongodb: {
     url: process.env.MONGODB_URL,
   },
 
   firebase: {
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    privateKey: process.env.FIREBASE_PRIVATE_KEY,
-    databaseUrl: process.env.FIREBASE_DATABASE_URL
+    serverKey: process.env.FIREBASE_SERVER_KEY,
   },
 
   reddit: {
