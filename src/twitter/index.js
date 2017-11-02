@@ -17,9 +17,6 @@ module.exports.initialize = () => {
   logger.info('Initialized Twitter API.');
 };
 
-module.exports.pingSMRTStatus = () => {
-};
-
 module.exports.startStreaming = () => {
   const keywords = config.twitter.keywords.join();
   const stream = twitter.stream('statuses/filter', {track: keywords});

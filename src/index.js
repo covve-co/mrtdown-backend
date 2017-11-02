@@ -24,6 +24,22 @@ const admin = require('./routes/admin');
   twitter.initialize();
   reddit.initialize();
 
+  const status = require('./mongodb/status');
+  const lines = require('./mongodb/lines');
+  await lines.insert({
+    shortName: 'EWL',
+    level: 4,
+  });
+  await lines.insert({
+    shortName: 'NSL',
+    level: 3,
+  });
+  const ewl = await lines.findLatest('EWL');
+  const nsl = await lines.findLatest('NSL');
+  console.log(ewl);
+  await status.update('EWL', ewl._id);
+  await status.update('NSL', nsl._id);
+
   // Start the streaming and polling
   reddit.startPolling();
   twitter.startStreaming();

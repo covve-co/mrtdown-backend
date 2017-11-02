@@ -13,6 +13,12 @@ module.exports.findLatest = async (shortName) => {
     .limit(1)
     .toArray();
   logger.debug('Fetched ' + shortName + ' line.');
+  return line[0];
+};
+
+module.exports.find = async(id) => {
+  const line = linesCollection().findOne({_id: id});
+  logger.debug('Fetched 1 line.');
   return line;
 };
 

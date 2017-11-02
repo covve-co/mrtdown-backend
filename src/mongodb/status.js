@@ -7,6 +7,7 @@ const statusCollection = () => {
 
 module.exports.get = async () => {
   const status = await statusCollection().findOne();
+  logger.debug('Fetched status.');
   return status || { lines: {} };
 };
 
