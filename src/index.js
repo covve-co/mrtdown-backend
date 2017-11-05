@@ -9,6 +9,7 @@ const mongodb = require('./mongodb');
 const firebase = require('./firebase');
 const twitter = require('./twitter');
 const reddit = require('./reddit');
+const wit = require('./node-wit');
 
 const api = require('./routes/api');
 const admin = require('./routes/admin');
@@ -23,22 +24,7 @@ const admin = require('./routes/admin');
   firebase.intialize();
   twitter.initialize();
   reddit.initialize();
-
-  const status = require('./mongodb/status');
-  const lines = require('./mongodb/lines');
-  await lines.insert({
-    shortName: 'EWL',
-    level: 4,
-  });
-  await lines.insert({
-    shortName: 'NSL',
-    level: 3,
-  });
-  const ewl = await lines.findLatest('EWL');
-  const nsl = await lines.findLatest('NSL');
-  console.log(ewl);
-  await status.update('EWL', ewl._id);
-  await status.update('NSL', nsl._id);
+  wit.initialize();
 
   // Start the streaming and polling
   reddit.startPolling();

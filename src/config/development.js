@@ -34,6 +34,10 @@ module.exports = {
     keywords: [
       'MRT',
       'SMRT',
+      'iphone',
     ],
   },
+  wit: {
+    accessToken: secrets.wit.accessToken,
+  }
 };

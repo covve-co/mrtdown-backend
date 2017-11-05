@@ -19,7 +19,7 @@ module.exports.initialize = () => {
 
 module.exports.startStreaming = () => {
   const keywords = config.twitter.keywords.join();
-  const stream = twitter.stream('statuses/filter', {track: keywords});
+const stream = twitter.stream('statuses/filter', {track: keywords});
 
   stream.on('data', function(event) {
     // Ensure event isn't a retweet
@@ -30,6 +30,6 @@ module.exports.startStreaming = () => {
   });
 
   stream.on('error', function(err) {
-    logger.debug('Twitter stream error: ', err);
+    console.log(err);
   });
 };
