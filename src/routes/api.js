@@ -1,3 +1,4 @@
+const postsDb = require('../mongodb/posts');
 const statusDb = require('../mongodb/status');
 const linesDb = require('../mongodb/lines');
 const wrap = require('express-async-wrap');
@@ -18,6 +19,11 @@ module.exports = (app) => {
     status.description = "";
 
     res.json(status);
+  }));
+
+  // Fetch the tweet list to display at the bottom.
+  app.get("/tweetlist", wrap(async (req, res) => {
+    res.send('Hello world');
   }));
 
   return app;
