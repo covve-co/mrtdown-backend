@@ -17,7 +17,6 @@ module.exports.insert = async (post) => {
     author: post.author,
     content: post.content,
     verified: post.verified,
-    votes: post.votes,
   };
   await postsCollection().insert(document);
   logger.debug('Inserted post.');
