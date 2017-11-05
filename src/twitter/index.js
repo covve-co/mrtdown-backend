@@ -33,3 +33,6 @@ module.exports.startStreaming = () => {
     logger.debug('Twitter stream error: ', err);
   });
 };
+
+module.exports.startStreamingVerified = () => {
+};
