@@ -23,7 +23,11 @@ module.exports = (app) => {
 
   // Fetch the tweet list to display at the bottom.
   app.get("/tweetlist", wrap(async (req, res) => {
-    res.send('Hello world');
+    const posts = await postsDb.all();
+    for (const post in posts) {
+      delete post._id;
+    }
+    res.json(posts);
   }));
 
   return app;
