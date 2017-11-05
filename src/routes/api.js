@@ -15,6 +15,8 @@ module.exports = (app) => {
     }
     delete status._id;
 
+    status.description = "";
+
     res.json(status);
   }));
 
