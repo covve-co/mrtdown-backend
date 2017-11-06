@@ -17,6 +17,7 @@ const admin = require('./routes/admin');
 
   // Create express app
   const app = express();
+  app.enable('trust proxy');
 
   // Setup services
   await mongodb.initialize();
