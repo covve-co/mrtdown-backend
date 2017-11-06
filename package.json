@@ -29,6 +29,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-async-wrap": "^1.0.0",
+    "express-rate-limit": "^2.9.0",
     "jquery": "^3.2.1",
     "mongodb": "^2.2.33",
     "morgan": "^1.9.0",
