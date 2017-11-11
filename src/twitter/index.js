@@ -39,14 +39,8 @@ const consumeStream = (stream, restart) => {
 
   stream.on('error', function(err) {
     logger.debug('Twitter stream error: ', err);
-    setTimeout(function() {
-      restart();
-    }, 1000);
   });
 
   stream.on('end', function() {
-    setTimeout(function() {
-      restart();
-    }, 1000);
   });
 }
