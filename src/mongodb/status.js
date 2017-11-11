@@ -14,14 +14,23 @@ module.exports.get = async () => {
 module.exports.update = async (shortName, id) => {
   const status = await module.exports.get();
   status.lines[shortName] = id;
-
-  // Update or insert depending on whether it exists.
-  // FIXME there's probably some Mongo option for this behaviour.
-  if (status._id) {
-    await statusCollection().update({_id: status._id}, status);
-    logger.debug('Updated status.');
-  } else {
-    await statusCollection().insert(status);
-    logger.debug('Status not found. Insert status.');
-  }
+  updateDatabase(status);
 };
+
+module.exports.clear = async (shortName) => {
+  const status = await module.exports.get();
+  delete status.lines[shortName];
+  updateDatabase(status);
+}
+
+module.exports.updateDatabase = async (status) => {
+  // Update or insert depending on whether it exists.
+// FIXME there's probably some Mongo option for this behaviour.
+if (status._id) {
+  await statusCollection().update({_id: status._id}, status);
+  logger.debug('Updated status.');
+} else {
+  await statusCollection().insert(status);
+  logger.debug('Status not found. Insert status.');
+}
+}

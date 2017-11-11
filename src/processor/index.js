@@ -1,11 +1,18 @@
 const logger = require('../logger');
 const wit = require('../node-wit'); 
 const sentiment = require('sentiment');
-const lines = require('../mongodb/lines')
+const lines = require('../mongodb/lines');
+const statusManager = require('../mongodb/status');
+const posts = require('../mongodb/posts');
 
 module.exports.process = (tweet) => {
   console.log(tweet.content, sentiment(tweet.content).score);
-  
+  if (tweet.verified) {
+    classifyVerified(tweet);
+  }
+  else {
+    classifyUnverified(tweet);
+  }
 };
 
 function classifyVerified(tweet) {
@@ -23,7 +30,7 @@ function classifyVerified(tweet) {
 
     if (status == 'Cleared') {
       // Clear line status
-      
+      statusManager.clear(line.shortName);
     }
     else {
       lines.insert(line);
@@ -36,6 +43,6 @@ function classifyUnverified(tweet) {
   // Analyse tweet sentiment
   const tweet_sentiment = sentiment(tweet.content)
   if (tweet_sentiment.score < 0 | 'delay' in tweet_sentiment.tokens) {
-
+    posts.insert(tweet);    
   }
 };
