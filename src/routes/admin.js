@@ -18,17 +18,17 @@ module.exports = (app) => {
     const level = req.body.level;
     const secret = req.body.secret;
     const levelInt = parseInt(level);
-    if (!shortname || !level || !secret || levelInt == NaN || levelInt < 0 || levelInt > 5) {
+    if (!shortName || !level || !secret || levelInt == NaN || levelInt < 0 || levelInt > 5) {
       return res.status(422).send('<h1>Nope</h1>');
     }
 
     if (secret === config.secret) {
       await linesDb.insert({
-        shortName: shortname,
+        shortName,
         level: levelInt,
       });
-      const line = await linesDb.findLatest(shortname);
-      await statusDb.update(shortname, line._id);
+      const line = await linesDb.findLatest(shortName);
+      await statusDb.update(shortName, line._id);
       return res.send('<h1>Ok.</h1>');
     }
     return res.status(401).send('<h1>Not authorized</h1>');
