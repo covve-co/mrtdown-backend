@@ -36,6 +36,16 @@ module.exports = {
       'SMRT_Singapore',
     ],
   },
+
+  email: {
+    user: secrets.email.user,
+    pass: secrets.email.pass,
+    recipients: [
+      'ravern.koh.dev@gmail.com',
+    ],
+  },
+
+  secret: secrets.secret,
   wit: {
     accessToken: secrets.wit.accessToken,
   }

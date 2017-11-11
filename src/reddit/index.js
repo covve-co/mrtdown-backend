@@ -16,7 +16,6 @@ module.exports.initialize = () => {
 };
 
 const poll = () => {
-  // logger.debug('Polling!');
 };
 
 module.exports.startPolling = () => {

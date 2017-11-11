@@ -10,6 +10,7 @@ const firebase = require('./firebase');
 const twitter = require('./twitter');
 const reddit = require('./reddit');
 const wit = require('./node-wit');
+const email = require('./email');
 
 const api = require('./routes/api');
 const admin = require('./routes/admin');
@@ -18,6 +19,7 @@ const admin = require('./routes/admin');
 
   // Create express app
   const app = express();
+  app.enable('trust proxy');
 
   // Setup services
   await mongodb.initialize();
@@ -25,6 +27,7 @@ const admin = require('./routes/admin');
   twitter.initialize();
   reddit.initialize();
   wit.initialize();
+  email.initialize();
 
   // Start the streaming and polling
   reddit.startPolling();
@@ -33,6 +36,7 @@ const admin = require('./routes/admin');
   // Middleware
   app.use(morgan('tiny'));
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended: true}));
 
   // Static
   app.use(express.static(__dirname + '/node_modules/jquery/dist'));

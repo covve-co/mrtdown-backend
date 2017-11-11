@@ -33,3 +33,6 @@ const stream = twitter.stream('statuses/filter', {track: keywords});
     console.log(err);
   });
 };
+
+module.exports.startStreamingVerified = () => {
+};
