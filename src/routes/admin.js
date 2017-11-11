@@ -14,9 +14,11 @@ module.exports = (app) => {
   }));
 
   app.post("/", wrap(async (req, res) => {
+    // Extract the params
     const shortname = req.body.shortname;
     const level = req.body.level;
     const secret = req.body.secret;
+
     if (shortname && level && secret) {
       const levelInt = parseInt(level);
       if (levelInt >= 0 && levelInt <= 5) {
