@@ -27,6 +27,12 @@ module.exports = (app) => {
 
     status.description = "";
 
+    const lines = [];
+    for (const key in status.lines) {
+      lines.push(status.lines[key]);
+    }
+    status.lines = lines;
+
     res.json(status);
   }));
 
