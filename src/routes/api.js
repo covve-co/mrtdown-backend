@@ -54,9 +54,7 @@ module.exports = (app) => {
       level: level,
     });
 
-    res.json({
-      message: 'Report saved!',
-    });
+    res.json({message: 'Report saved!'});
   }));
 
   return app;
