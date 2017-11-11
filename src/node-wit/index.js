@@ -13,7 +13,7 @@ module.exports.initialize = () => {
 }
 
 module.exports.send = async (tweetText) => {
-  client.message(tweetText)
+ await client.message(tweetText)
   .then((x)=>{
     return x;
   });

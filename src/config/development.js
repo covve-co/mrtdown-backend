@@ -30,7 +30,7 @@ module.exports = {
     accessTokenKey: secrets.twitter.accessTokenKey,
     accessTokenSecret: secrets.twitter.accessTokenSecret,
 
-    verifiedUsername: 'SMRT_Singapore',
+    verifiedUsername: 'covveco',
     keywords: [
      'SMRT',
       'SMRT_Singapore',
@@ -46,7 +46,8 @@ module.exports = {
   },
 
   secret: secrets.secret,
+
   wit: {
     accessToken: secrets.wit.accessToken,
-  }
+  },
 };

@@ -6,20 +6,22 @@ const statusManager = require('../mongodb/status');
 const posts = require('../mongodb/posts');
 
 module.exports.process = (tweet) => {
-  console.log(tweet.content, sentiment(tweet.content).score);
   if (tweet.verified) {
+    console.log(`VERIFIED: ${tweet.content}`)
     classifyVerified(tweet);
   }
   else {
+    console.log(tweet.content); 
     classifyUnverified(tweet);
   }
 };
 
-function classifyVerified(tweet) {
+async function  classifyVerified(tweet) {
   // Legit breakdown
-  wit.send(tweet.content)
+ await wit.send(tweet.content)
   .then((res) => {
     let line;
+    console.log(res);
     const entities = res.entities;
     // Not doing duration lmao
     // const duration = (entities.duration.minute) ? res.entities.duration.minute:'Unspecified';
@@ -35,7 +37,9 @@ function classifyVerified(tweet) {
     else {
       lines.insert(line);
     }
-  
+  })
+  .catch((err) => {
+    logger.info(err);
   })
 };
 

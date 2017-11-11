@@ -47,4 +47,8 @@ module.exports = {
   },
 
   secret: process.env.SECRET,
+
+  wit: {
+    accessToken: secrets.wit.accessToken,
+  },
 };
