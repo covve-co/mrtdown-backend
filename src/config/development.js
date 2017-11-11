@@ -37,5 +37,13 @@ module.exports = {
     ],
   },
 
+  email: {
+    user: secrets.email.user,
+    pass: secrets.email.pass,
+    recipients: [
+      'ravern.koh.dev@gmail.com',
+    ],
+  },
+
   secret: secrets.secret,
 };
