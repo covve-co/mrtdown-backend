@@ -25,10 +25,11 @@ module.exports = (app) => {
     }
     delete status._id;
 
-    status.description = "";
+    status.description = "I built a bot in 3 hours.";
 
     const lines = [];
     for (const key in status.lines) {
+      status.lines[key].verified = true;
       lines.push(status.lines[key]);
     }
     status.lines = lines;
