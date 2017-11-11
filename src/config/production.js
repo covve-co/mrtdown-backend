@@ -32,5 +32,7 @@ module.exports = {
       'MRT',
       'SMRT',
     ],
-  }
+  },
+
+  secret: process.env.SECRET,
 };

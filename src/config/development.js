@@ -36,4 +36,6 @@ module.exports = {
       'SMRT',
     ],
   },
+
+  secret: secrets.secret,
 };

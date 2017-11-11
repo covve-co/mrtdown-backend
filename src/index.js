@@ -32,6 +32,7 @@ const admin = require('./routes/admin');
   // Middleware
   app.use(morgan('tiny'));
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended: true}));
 
   // Static
   app.use(express.static(__dirname + '/node_modules/jquery/dist'));
