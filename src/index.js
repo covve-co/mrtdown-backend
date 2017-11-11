@@ -9,6 +9,7 @@ const mongodb = require('./mongodb');
 const firebase = require('./firebase');
 const twitter = require('./twitter');
 const reddit = require('./reddit');
+const email = require('./email');
 
 const api = require('./routes/api');
 const admin = require('./routes/admin');
@@ -24,6 +25,7 @@ const admin = require('./routes/admin');
   firebase.intialize();
   twitter.initialize();
   reddit.initialize();
+  email.initialize();
 
   // Start the streaming and polling
   reddit.startPolling();

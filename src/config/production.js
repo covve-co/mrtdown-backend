@@ -34,5 +34,17 @@ module.exports = {
     ],
   },
 
+  email: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+    recipients: [
+      'ravern@covve.co',
+      'max@covve.co',
+      'pyae@covve.co',
+      'sean@covve.co',
+      'yadunand@covve.co',
+    ],
+  },
+
   secret: process.env.SECRET,
 };

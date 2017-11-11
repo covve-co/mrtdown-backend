@@ -3,6 +3,7 @@ const statusDb = require('../mongodb/status');
 const linesDb = require('../mongodb/lines');
 const reportsDb = require('../mongodb/reports');
 const wrap = require('express-async-wrap');
+const email = require('../email');
 
 const RateLimit = require('express-rate-limit');
 const limiter = new RateLimit({
@@ -48,11 +49,9 @@ module.exports = (app) => {
       });
     }
 
-    // Create and save the report
-    await reportsDb.insert({
-      line: line,
-      level: level,
-    });
+    const report = {line, level};
+    await reportsDb.insert(report);
+    email.send(report);
 
     res.json({message: 'Report saved!'});
   }));
