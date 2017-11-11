@@ -1,6 +1,6 @@
 module.exports = {
   port: process.env.PORT,
-  host: 'helloworld.com',
+  host: 'mrtdown.covve.co',
   logLevel: 'info',
 
   mongodb: {
@@ -28,6 +28,7 @@ module.exports = {
     accessTokenSecret: process.env.TWITTER_TOKEN_SECRET,
 
     verifiedUsername: 'SMRT_Singapore',
+    verfiedId: '307781209',
     keywords: [
       'MRT',
       'SMRT',
