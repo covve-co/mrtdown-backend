@@ -32,9 +32,8 @@ module.exports = {
 
     verifiedUsername: 'SMRT_Singapore',
     keywords: [
-      'MRT',
-      'SMRT',
-      'iphone',
+     'SMRT',
+      'SMRT_Singapore',
     ],
   },
   wit: {

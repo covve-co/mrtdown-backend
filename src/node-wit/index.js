@@ -13,5 +13,8 @@ module.exports.initialize = () => {
 }
 
 module.exports.send = async (tweetText) => {
-  console.log(client.send(tweetText));
+  client.message(tweetText)
+  .then((x)=>{
+    return x;
+  });
 }
