@@ -33,8 +33,8 @@ module.exports = {
     verifiedUsername: 'covveco',
     verifiedId: '850337943776509952',
     keywords: [
-      'MRT',
-      'SMRT',
+     'SMRT',
+      'SMRT_Singapore',
     ],
   },
 
@@ -47,4 +47,8 @@ module.exports = {
   },
 
   secret: secrets.secret,
+
+  wit: {
+    accessToken: secrets.wit.accessToken,
+  },
 };
