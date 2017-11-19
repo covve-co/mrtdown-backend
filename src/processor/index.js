@@ -1,9 +1,10 @@
 const logger = require('../logger');
-const wit = require('../node-wit'); 
+const wit = require('../node-wit');
 const sentiment = require('sentiment');
 const lines = require('../mongodb/lines');
-const statusManager = require('../mongodb/status');
+const statusDb = require('../mongodb/status');
 const posts = require('../mongodb/posts');
+const firebase = require('../firebase');
 
 module.exports.process = (tweet) => {
   if (tweet.verified) {
@@ -11,15 +12,15 @@ module.exports.process = (tweet) => {
     classifyVerified(tweet);
   }
   else {
-    console.log(tweet.content); 
+    console.log(tweet.content);
     classifyUnverified(tweet);
   }
 };
 
-async function  classifyVerified(tweet) {
-  // Legit breakdown
- await wit.send(tweet.content)
-  .then((res) => {
+async function classifyVerified(tweet) {
+  try {
+    // Legit breakdown
+    const res = await wit.send(tweet.content)
     let line;
     console.log(res);
     const entities = res.entities;
@@ -32,21 +33,23 @@ async function  classifyVerified(tweet) {
 
     if (status == 'Cleared') {
       // Clear line status
-      statusManager.clear(line.shortName);
+      await statusDb.clear(line.shortName);
     }
     else {
-      lines.insert(line);
+      await lines.insert(line);
+      const line = lines.fetchLatest(line.shortName);
+      await statusDb.update(line.shortName, line._id);
+      firebase.notify(line.shortName);
     }
-  })
-  .catch((err) => {
+  } catch (err) {
     logger.info(err);
-  })
+  }
 };
 
 function classifyUnverified(tweet) {
   // Analyse tweet sentiment
   const tweet_sentiment = sentiment(tweet.content)
   if (tweet_sentiment.score < 0 | 'delay' in tweet_sentiment.tokens) {
-    posts.insert(tweet);    
+    posts.insert(tweet);
   }
 };

@@ -46,9 +46,9 @@ module.exports = {
     ],
   },
 
-  secret: secrets.secret,
-
   wit: {
     accessToken: secrets.wit.accessToken,
   },
+
+  secret: secrets.secret,
 };
