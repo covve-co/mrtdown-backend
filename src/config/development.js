@@ -31,6 +31,7 @@ module.exports = {
     accessTokenSecret: secrets.twitter.accessTokenSecret,
 
     verifiedUsername: 'covveco',
+    verifiedId: '850337943776509952',
     keywords: [
      'SMRT',
       'SMRT_Singapore',
