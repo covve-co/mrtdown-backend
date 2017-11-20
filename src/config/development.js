@@ -34,7 +34,7 @@ module.exports = {
     verifiedId: '850337943776509952',
     keywords: [
      'SMRT',
-      'SMRT_Singapore',
+     'SMRT_Singapore',
     ],
   },
 

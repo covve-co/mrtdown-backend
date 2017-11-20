@@ -25,7 +25,7 @@ module.exports.startStreaming = () => {
     // Ensure event isn't a retweet
     if (!event.text.startsWith('RT') && !event.in_reply_to_status_id) {
       const tweet = data.extract(event);
-      processor.process(tweet);
+      processor.twitterProcessor(tweet);
     }
   });
 

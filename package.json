@@ -16,6 +16,9 @@
     "reddit",
     "api"
   ],
+  "scripts": {
+    "test": "mocha"
+  },
   "author": "Covve.co",
   "license": "ISC",
   "bugs": {
@@ -31,11 +34,12 @@
     "express-async-wrap": "^1.0.0",
     "express-rate-limit": "^2.9.0",
     "jquery": "^3.2.1",
+    "mocha": "^4.0.1",
     "mongodb": "^2.2.33",
     "morgan": "^1.9.0",
     "node-gcm": "^0.14.9",
-    "nodemailer": "^4.4.0",
     "node-wit": "^4.3.0",
+    "nodemailer": "^4.4.0",
     "sentiment": "^4.1.0",
     "snoowrap": "^1.14.2",
     "twitter": "^1.7.1",
